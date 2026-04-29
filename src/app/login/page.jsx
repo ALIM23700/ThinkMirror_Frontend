@@ -22,10 +22,14 @@ export default function LoginPage() {
     try {
       setLoading(true);
 
+      console.log("📤 Sending data:", form); // ✅ DEBUG 1
+
       const res = await axios.post(
-        "http://localhost:5000/api/analyze/login",
+        "https://thinkmirror-backend.onrender.com/api/analyze/login",
         form
       );
+
+      console.log("✅ Response:", res.data); // ✅ DEBUG 2
 
       // 🔐 store token
       localStorage.setItem("token", res.data.token);
@@ -33,7 +37,17 @@ export default function LoginPage() {
       alert("Login successful!");
       router.push("/");
     } catch (error) {
-      console.error(error);
+      console.error("❌ FULL ERROR:", error); // ✅ DEBUG 3
+
+      if (error.response) {
+        console.log("📥 BACKEND RESPONSE:", error.response.data); // 🔥 MOST IMPORTANT
+        console.log("📊 STATUS:", error.response.status);
+      } else if (error.request) {
+        console.log("🚫 NO RESPONSE:", error.request);
+      } else {
+        console.log("⚠️ ERROR MESSAGE:", error.message);
+      }
+
       alert("Login failed");
     } finally {
       setLoading(false);

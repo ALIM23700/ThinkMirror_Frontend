@@ -23,7 +23,7 @@ export default function SignupPage() {
     try {
       setLoading(true);
 
-      await axios.post("http://localhost:5000/api/analyze/register", form);
+      await axios.post("https://thinkmirror-backend.onrender.com/api/analyze/register", form);
 
       alert("Signup successful!");
       router.push("/login");

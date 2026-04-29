@@ -34,7 +34,7 @@ export default function Home() {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/analyze",
+        "https://thinkmirror-backend.onrender.com/api/analyze",
         { thought },
         {
           headers: {

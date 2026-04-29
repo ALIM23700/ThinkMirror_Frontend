@@ -21,7 +21,7 @@ export default function HistoryPage() {
       }
 
       const res = await axios.get(
-        "http://localhost:5000/api/analyze/thoughts",
+        "https://thinkmirror-backend.onrender.com/api/analyze/thoughts",
         {
           headers: {
             Authorization: `Bearer ${token}`,
