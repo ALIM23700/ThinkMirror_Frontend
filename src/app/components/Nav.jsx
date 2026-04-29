@@ -7,16 +7,28 @@ import { useEffect, useState } from "react";
 const Nav = () => {
   const router = useRouter();
   const [token, setToken] = useState(null);
-  const [open, setOpen] = useState(false); // 🔥 mobile menu toggle
+  const [open, setOpen] = useState(false);
 
+  // 🔥 always sync with localStorage
   useEffect(() => {
-    const t = localStorage.getItem("token");
-    setToken(t);
+    const syncToken = () => {
+      setToken(localStorage.getItem("token"));
+    };
+
+    syncToken(); // initial load
+
+    // optional: handle back/forward navigation
+    window.addEventListener("focus", syncToken);
+
+    return () => {
+      window.removeEventListener("focus", syncToken);
+    };
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setToken(null);
+    setToken(null); // 🔥 force UI update
+    setOpen(false);
     router.push("/login");
   };
 
@@ -28,7 +40,7 @@ const Nav = () => {
         ThinkMirror 🧠
       </h1>
 
-      {/* 🔥 Mobile menu button */}
+      {/* Mobile button */}
       <button
         className="md:hidden text-2xl"
         onClick={() => setOpen(!open)}
@@ -54,20 +66,17 @@ const Nav = () => {
           History
         </Link>
 
-        {/* If NOT logged in */}
         {!token && (
           <>
             <Link href="/login" className="hover:text-blue-500">
               Login
             </Link>
-
             <Link href="/signup" className="hover:text-blue-500">
               Signup
             </Link>
           </>
         )}
 
-        {/* If logged in */}
         {token && (
           <button
             onClick={handleLogout}
@@ -77,7 +86,6 @@ const Nav = () => {
           </button>
         )}
       </div>
-
     </nav>
   );
 };
