@@ -38,6 +38,21 @@ Users can write their thoughts, receive AI-generated counter-arguments, and mana
 - 🎯 Clean and modern UI/UX design  
 
 ---
+## 📸 Screenshots
+
+### Home Page
+![Home](screenshot/Home.png) 
+
+### Thought History
+![History Page](screenshot/history.png)
+
+### Login Page
+![Login Page](screenshot/Login.png)
+
+### Signup Page
+![Signup Page](screenshot/signup.png)
+
+---
 
 ## 🧠 How It Works (Frontend Architecture)
 
@@ -85,22 +100,6 @@ Create .env.local file:
 
 4️⃣ Run the project
 npm run dev
----
-
-## 📸 Screenshots
-
-### Home Page
-![Home](screenshot/Home.png) 
-
-### Thought History
-![History Page](screenshot/history.png)
-
-### Login Page
-![Login Page](screenshot/Login.png)
-
-### Signup Page
-![Signup Page](screenshot/signup.png)
-
 ---
 
 ## 🚀 Future Improvements
