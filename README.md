@@ -74,12 +74,12 @@ Dynamic UI Updates
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/ALIM23700/ThinkMirror_Frontend.git
+git clone https://github.com/ALIM23700/ThinkMirror_Frontend.git ```
 
 ## 2️⃣ Install dependencies
 ```bash
 npm install
-3️⃣ Setup environment variables
+3️⃣ Setup environment variables ```
 
 Create .env.local file:
 
