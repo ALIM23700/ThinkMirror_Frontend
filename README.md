@@ -85,7 +85,7 @@ Create .env.local file:
 
 4️⃣ Run the project
 npm run dev
-
+---
 
 ## 📸 Screenshots
 
