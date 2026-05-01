@@ -1,7 +1,6 @@
 # 🎨 ThinkMirror Frontend — AI-Powered Decision Analysis UI
 
 ## 🔗 Project Repositories
-- 🎨 Frontend: https://github.com/ALIM23700/ThinkMirror_Frontend  
 - ⚙️ Backend: https://github.com/ALIM23700/ThinkMirror_Backend  
 
 ## 🌐 Live Demo
