@@ -1,24 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [thought, setThought] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const router = useRouter();
-
-  // 🔐 PROTECT PAGE
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      router.push("/login");
-    }
-  }, []);
 
   const handleAnalyze = async () => {
     if (!thought) return;
@@ -26,27 +14,14 @@ export default function Home() {
     try {
       setLoading(true);
 
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        router.push("/login");
-        return;
-      }
-
       const res = await axios.post(
         "http://localhost:5000/api/analyze",
-        { thought },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { thought }
       );
 
       setResult(res.data.data);
     } catch (error) {
       console.error(error);
-      router.push("/login");
     } finally {
       setLoading(false);
     }

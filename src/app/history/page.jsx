@@ -16,7 +16,8 @@ export default function HistoryPage() {
 
       // 🔐 extra safety check
       if (!token) {
-        router.push("/login");
+        alert("Login to access history");
+        router.push("/");
         return;
       }
 
@@ -33,7 +34,8 @@ export default function HistoryPage() {
     } catch (error) {
       console.error("Error fetching history:", error);
 
-      router.push("/login");
+      alert("Login to access history");
+      router.push("/");
     } finally {
       setLoading(false);
     }
