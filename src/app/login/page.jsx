@@ -29,18 +29,18 @@ export default function LoginPage() {
         form
       );
 
-      console.log("✅ Response:", res.data); // ✅ DEBUG 2
+      
 
-      // 🔐 store token
+      
       localStorage.setItem("token", res.data.token);
 
       alert("Login successful!");
       router.push("/");
     } catch (error) {
-      console.error("❌ FULL ERROR:", error); // ✅ DEBUG 3
+      console.error("❌ FULL ERROR:", error); 
 
       if (error.response) {
-        console.log("📥 BACKEND RESPONSE:", error.response.data); // 🔥 MOST IMPORTANT
+        console.log("📥 BACKEND RESPONSE:", error.response.data); 
         console.log("📊 STATUS:", error.response.status);
       } else if (error.request) {
         console.log("🚫 NO RESPONSE:", error.request);

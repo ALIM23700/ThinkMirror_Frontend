@@ -62,7 +62,7 @@ export default function Home() {
             </h3>
 
             <p className="text-sm sm:text-base">
-              Risk Score: {result.riskScore}
+              Risk Score(out of 10): {result.riskScore}
             </p>
 
             <h4 className="font-semibold text-sm sm:text-base">

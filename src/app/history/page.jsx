@@ -14,7 +14,7 @@ export default function HistoryPage() {
     try {
       const token = localStorage.getItem("token");
 
-      // 🔐 extra safety check
+      
       if (!token) {
         alert("Login to access history");
         router.push("/");
