@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,7 +15,6 @@ export default function HistoryPage() {
     try {
       const token = localStorage.getItem("token");
 
-      
       if (!token) {
         alert("Login to access history");
         router.push("/");
@@ -38,6 +38,28 @@ export default function HistoryPage() {
       router.push("/");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.delete(
+        `http://localhost:5000/api/analyze/thoughts/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setThoughts((prevThoughts) =>
+        prevThoughts.filter((item) => item._id !== id)
+      );
+    } catch (error) {
+      console.error("Error deleting thought:", error);
+      alert("Failed to delete thought");
     }
   };
 
@@ -71,9 +93,16 @@ export default function HistoryPage() {
                 Risk Score: {item.riskScore}
               </p>
 
-              <p className="text-xs sm:text-sm">
+              <p className="text-xs sm:text-sm mb-3">
                 <strong>Recommendation:</strong> {item.recommendation}
               </p>
+
+              <button
+                onClick={() => handleDelete(item._id)}
+                className="bg-red-600 text-white px-3 py-1.5 rounded-md text-sm hover:bg-red-700"
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
@@ -81,3 +110,4 @@ export default function HistoryPage() {
     </div>
   );
 }
+
