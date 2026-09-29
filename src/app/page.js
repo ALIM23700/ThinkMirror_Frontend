@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -14,9 +15,18 @@ export default function Home() {
     try {
       setLoading(true);
 
+      const token = localStorage.getItem("token");
+
       const res = await axios.post(
         "https://thinkmirror-backend.onrender.com/api/analyze",
-        { thought }
+        { thought },
+        token
+          ? {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          : {}
       );
 
       setResult(res.data.data);
@@ -95,3 +105,4 @@ export default function Home() {
     </div>
   );
 }
+

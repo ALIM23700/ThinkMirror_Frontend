@@ -46,7 +46,7 @@ export default function HistoryPage() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/analyze/thoughts/${id}`,
+        `https://thinkmirror-backend.onrender.com/api/analyze/thoughts/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
